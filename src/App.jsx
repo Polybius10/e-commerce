@@ -7,7 +7,7 @@ import React,{ useState, useEffect } from 'react';
 import axios from 'axios';
 
 function App() {
-  const [data, setData] = useState(0)
+  const [data, setData] = useState([])
   useEffect (() => {
     axios.get('https://api.escuelajs.co/api/v1/products/')
     .then(response => {
@@ -22,39 +22,22 @@ function App() {
   }
 
   return (
-    <div className="p-0 m-0 border-box font-custom w-[100%]">
+    <div className="p-0 m-0 border-box bg-gray-300 font-custom w-[100%]">
       <div className='flex p-0 m-0 w-[100%]'>
         <Header></Header>
       </div>
       <Search/>
       <Filters/>
-      <div className='flex flex-col py-4 mx-auto bg-white gap-4 
-        md:grid md:grid-cols-2 md:gap-2 
-        lg:grid lg:grid-cols-3 lg:gap-3'
-      >
-  
-          
-          <Card 
-              key={data[0].id}
-              title={data[0].title}
-              price={data[0].price}
-              images={(data[0].images[0])}
-          />
-          <Card>
-              title={data[0].title}
-              price={data[0].price}
-              images={(data[0].images[0])}
-          </Card>
+        <div className='flex flex-col py-4 mx-8  gap-4 
+        md:}grid md:grid-cols-2 md:gap-2 
+        lg:grid lg:grid-cols-3 lg:gap-3'>
+          {data.map(index => {
+            <Card key={data.id} text={JSON.stringify(data.title)} image={data.images} price={JSON.stringify(data.price)}/>
+          })
+          }
 
-          <Card>
-              (data: 
-                key: {data[0].id},
-                title: {data[0].title},
-                images: {data[0].images[0]},
-                price: {data[0].price},
-              )
-          </Card>
-      </div>
+
+          </div>
       <Footer/>
     </div>
   )

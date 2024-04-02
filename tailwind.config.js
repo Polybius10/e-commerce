@@ -8,7 +8,11 @@ export default {
     fontFamily: {
       custom:["Inria Serif", "sans-serif"]
     },
-    extend: {      
+    extend: {     
+      dark: {
+        background: "bg-slate-800",
+        color: 'text-white'
+      },
       boxShadow: {
       'bxl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
     }},
