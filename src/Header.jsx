@@ -1,25 +1,12 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
-import axios from 'axios'
+import { useState } from 'react';
+
 
 
 export default function Header() {
+const [darkMode, setDarkMode] = useState(null)
 const [count, setCount] = useState(0)
 const [isOpen, setIsOpen] = useState(false);
-const [data, setData] = useState(null)
-useEffect (() => {
-  axios.get('https://api.escuelajs.co/api/v1/categories')
-  .then(response => {
-    setData(response.data);
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
-},[]);
-
-if (!data) {
-  return <div className='text-3xl bg-black text-white'>Loading...</div>
-}
 
 const toggle = () => setIsOpen(!isOpen);
   return (
@@ -40,8 +27,8 @@ const toggle = () => setIsOpen(!isOpen);
                   <li><a href='#'>Log In</a></li>
                   <li><a href='#'></a></li>
                   <li><a href='#'></a></li>
-                  <li><a href='#'>Dark Mode</a></li>
               </ul>
+              <button onClick={darkMode}></button>
           </div> 
           )}
     </header>
