@@ -1,29 +1,36 @@
-import Header from './Header';
-import Filters from './Filters.jsx';
-import Card from './Card.jsx';
-import Search from './Search.jsx';
-import Footer from './Footer.jsx';
-import { useFetch } from './UseFetch';
-
+import Filters from './components/Filters.jsx';
+import Product from './components/Product';
+import Card from './components/Card.jsx';
+import Search from './components/Search.jsx';
+import Footer from './components/Footer.jsx';
+import { useFetch } from './components/UseFetch';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {ItemsContainer} from './components/ItemsContainer';
 
 function App() {
-  const {data, loading, error} = useFetch('https://api.escuelajs.co/api/v1/products/');
+  const {data, loading, error} = useFetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=9');
   console.log({data});
 
   return (
-    <div className="p-0 m-0 border-box bg-gray-300 font-custom w-[100%]">
+    <BrowserRouter className="p-0 m-0 border-box bg-gray-300 font-custom w-[100%]">
       <div className='flex p-0 m-0 w-[100%]'>
-        <Header/>
+        <header className='flex w-full h-12 px-4 justify-between'>
+        <Link to='/'><img src="./assets/react.svg" alt="Logo" className='h-8 w-10 bg-cover bg-no-repeat'/></Link>
+        <nav>
+          <button>DarkMode</button>
+          <span>Log In</span>
+        </nav>
+      </header>
       </div>
       <Search/>
-        <article className='flex flex-col py-4 mx-8  gap-4 
-        md:grid md:grid-cols-2 md:gap-2 
-        lg:grid lg:grid-cols-3 lg:gap-3'>
-          {data?.map(index =>  
-          <Card key={index.id} title={JSON.stringify(index.title)} image={index.images[0]} price={JSON.stringify(index.price)}/>)}
-        </article>
+      <Filters/>
+      <Routes>
+        <Route path='/' element={<ItemsContainer/>}></Route>
+        <Route path='/product' element={<Product/>}></Route>
+      </Routes>
       <Footer/>
-    </div>
+    </BrowserRouter>
   )
 }
 

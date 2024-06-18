@@ -10,8 +10,8 @@ function Footer() {
 
     </div>
         <ul className='text-white bg-black'>
-             <li><a href=''>Linkedin</a></li>
-             <li><a href=''>Github</a></li>
+             <li><a href='https://www.linkedin.com/in/matias-joel-moyano-837a87242/'>Linkedin</a></li>
+             <li><a href='https://github.com/polybius10'>Github</a></li>
         </ul>
     </div>
   )

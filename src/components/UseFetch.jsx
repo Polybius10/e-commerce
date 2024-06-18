@@ -15,7 +15,7 @@ export function useFetch(url) {
     },[]);
     if (!data) {
       return <div className='text-3xl bg-black text-white'>Loading...</div>
-    }
+    } 
 
   return {data, loading, error};
 }
