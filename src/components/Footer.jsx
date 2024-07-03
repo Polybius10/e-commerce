@@ -3,10 +3,10 @@ import React from 'react'
 function Footer() {
   return (
     <div>
-    <div className='w-[100%] h-80 bg-black shadow'>
-        <button
-        className='flex relative w-fit h-fit top-[-14px] left-[47vw] py-1 px-4 rounded-xl bg-orange-400 text-white font-bold'
-        >More</button>
+    <div className='w-full h-80 bg-black shadow'>
+        {/* <button
+        className='flex relative w-fit h-fit py-1 px-4 mx-auto top-[-14px] rounded-xl bg-orange-400 text-white font-bold'
+        >More</button> */}
 
     </div>
         <ul className='text-white bg-black'>

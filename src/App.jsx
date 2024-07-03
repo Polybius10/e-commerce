@@ -1,33 +1,28 @@
+import { Header } from './components/Header.jsx';
 import Filters from './components/Filters.jsx';
+import Main from './components/Main.jsx';
 import Product from './components/Product';
-import Card from './components/Card.jsx';
 import Search from './components/Search.jsx';
 import Footer from './components/Footer.jsx';
-import { useFetch } from './components/UseFetch';
+import { useFetch } from './helpers/UseFetch.jsx';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import {ItemsContainer} from './components/ItemsContainer';
 
 function App() {
-  const {data, loading, error} = useFetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=9');
-  console.log({data});
+  const {data, loading, error} = useFetch('https://fakestoreapi.com/products');
+  // console.log({data});
 
   return (
-    <BrowserRouter className="p-0 m-0 border-box bg-gray-300 font-custom w-[100%]">
-      <div className='flex p-0 m-0 w-[100%]'>
-        <header className='flex w-full h-12 px-4 justify-between'>
-        <Link to='/'><img src="./assets/react.svg" alt="Logo" className='h-8 w-10 bg-cover bg-no-repeat'/></Link>
-        <nav>
-          <button>DarkMode</button>
-          <span>Log In</span>
-        </nav>
-      </header>
-      </div>
+    <BrowserRouter className="p-0 m-0 border-box bg-gray-300 font-custom w-[100%] dark:bg-slate-800">
+      <Header/>
       <Search/>
       <Filters/>
       <Routes>
-        <Route path='/' element={<ItemsContainer/>}></Route>
-        <Route path='/product' element={<Product/>}></Route>
+          <Route path='/' element={<Main/>}></Route>
+          <Route path='/product' element={<ItemsContainer/>}></Route>
+          <Route path='/product/:category' element={<ItemsContainer/>}></Route>
+          <Route path='/product/:id' element={<Product/>}></Route>
       </Routes>
       <Footer/>
     </BrowserRouter>

@@ -1,11 +1,20 @@
 import React from 'react';
-// import { useEffect, useState } from 'react';
-import {useFetch} from './UseFetch.jsx'
+import { useEffect, useState } from 'react';
+import {useFetch} from '../helpers/UseFetch.jsx'
+import { useParams } from 'react-router-dom';
 import Card from './Card.jsx';
 
 function ItemsContainer() {
     const {data, loading, error} = useFetch('https://fakestoreapi.com/products');
-    console.log({data})
+    const category = useParams().category;
+    console.log({category});
+
+    // useEffect(() => {
+    //   data()
+    //     .then((res) => {
+    //       if (category)
+    //     })
+    // },[])
   return (
     <div>
     <article className='flex flex-col py-4 mx-8  gap-4 
@@ -13,10 +22,10 @@ function ItemsContainer() {
     lg:grid lg:grid-cols-3 lg:gap-3'>
       {data?.map(index =>  
       <Card key={index.id} 
-      title={JSON.stringify(index.title)} 
+      title={index.title} 
       image={index.image} 
-      price={JSON.stringify(index.price)}
-      category={JSON.stringify(index.category)}/>)}
+      price={index.price}
+      category={index.category}/>)}
     </article>
     </div>
   )

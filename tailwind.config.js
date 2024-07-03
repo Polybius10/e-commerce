@@ -9,6 +9,9 @@ export default {
       custom:["Inria Serif", "sans-serif"]
     },
     extend: {     
+      backgroundImage: {
+        'logo-image': "url('./src/assets/logo.png')",
+      },
       dark: {
         background: "bg-slate-800",
         color: 'text-white'
