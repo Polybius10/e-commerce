@@ -4,9 +4,9 @@ import {useFetch} from '../helpers/UseFetch.jsx'
 import { useParams } from 'react-router-dom';
 import Card from './Card.jsx';
 
-function ItemsContainer() {
+function Products() {
     const {data, loading, error} = useFetch('https://fakestoreapi.com/products');
-    const category = useParams().category;
+    const category = useParams();
     console.log({category});
 
     // useEffect(() => {
@@ -31,4 +31,4 @@ function ItemsContainer() {
   )
 }
 
-export {ItemsContainer}
+export { Products }
